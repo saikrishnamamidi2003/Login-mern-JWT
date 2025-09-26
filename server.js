@@ -4,13 +4,16 @@ const app = express();
 const RegisterUser = require('./model');
 const mongoose = require('mongoose');
 
-mongoose.connect("mongodb+srv://saikrishnamamidi2003_db_user:Saikrishna%40123@cluster0.j90sct6.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0").then(
+mongoose.connect("mongodb+srv://saikrishnamamidi2003_db_user:Saikrishna%40123@cluster0.j90sct6.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
+}).then(
     ()=>{
+
         console.log("db connected")
     }
 )
 
 app.use(express.json());
+
 
 app.post('/register', async(req, res)=>{
     try{
@@ -33,7 +36,7 @@ app.post('/register', async(req, res)=>{
     }
     catch(err){
         console.log(err);
-        return res.status(500).send('Internel server Error')
+        return res.status(500).send('Internal server Error')
     }
 })
 
