@@ -2,7 +2,12 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 
+const cors = require('cors');
+
 const RegisterUser = require('./model');
+
+const middleware = require('./middleware');
+
 const jwt = require('jsonwebtoken');
 mongoose.connect("mongodb+srv://saikrishnamamidi2003_db_user:Saikrishna%40123@cluster0.j90sct6.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
 }).then(
@@ -78,6 +83,22 @@ app.post('/login', async(req, res) => {
         return res.status(500).send('server Error');
     }
 });
+
+app.get('/myProfile', middleware, async(req, res) => {
+    try{
+        let exist = await RegisterUser.findById(req.user.id);
+        if(!exist){
+            return res.status(400).send('User not found');
+        }
+        res.json(exist);
+    }
+    catch(err)
+{
+        console.log(err);
+        return res.status(500).send('server Error');
+    }
+});
+
 
 
 
