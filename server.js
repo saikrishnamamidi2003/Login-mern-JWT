@@ -19,6 +19,7 @@ mongoose.connect("mongodb+srv://saikrishnamamidi2003_db_user:Saikrishna%40123@cl
 
 app.use(express.json());
 
+app.use(cors({origin : "*"}));
 
 app.post('/register', async(req, res)=>{
     console.log("Request Body:", req.body);  
