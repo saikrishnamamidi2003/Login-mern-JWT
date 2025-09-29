@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, {useState, useContext} from 'react'
 import { store } from './App'
-import { redirect } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 
 const Login = () => {
     const [token, setToken] = useContext(store)
@@ -19,7 +19,7 @@ const Login = () => {
         )
     }
     if(token){
-       return <redirect to = '/myProfile' />
+       return <Navigate to = '/myProfile' />
     }
   return (
     <div>
