@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 
 const Register = () => {
     const [data, setData] = useState({
-        useName : '',
+        userName : '',
         email : '',
         password : '',
         confirmpassword : ''
